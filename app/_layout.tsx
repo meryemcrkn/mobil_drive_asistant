@@ -2,6 +2,7 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { Platform } from 'react-native';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -22,11 +23,13 @@ export default function Layout() {
       <Stack
         screenOptions={{
           headerShown: false,
-          animation: 'slide_from_right'
+          animation: Platform.OS === 'ios' ? 'default' : 'none'
         }}
       >
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="index" />
+        <Stack.Screen name="register" />
+        <Stack.Screen name="welcome" />
+        <Stack.Screen name="camera" />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

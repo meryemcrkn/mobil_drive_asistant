@@ -9,7 +9,10 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Bu uygulama kamera erişimi gerektirir."
+      }
     },
     "android": {
       "adaptiveIcon": {

@@ -10,6 +10,7 @@ export default function LoginScreen() {
     if (email && password) {
       // Burada gerçek bir API çağrısı yapılabilir
       Alert.alert('Başarılı', 'Giriş yapıldı!');
+      router.replace('/welcome');
     } else {
       Alert.alert('Hata', 'Lütfen tüm alanları doldurun!');
     }
@@ -19,24 +20,36 @@ export default function LoginScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.innerContainer}>
         <Text style={styles.title}>Giriş Yap</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="E-posta"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Şifre"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
+        
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>E-posta Adresi</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="ornek@email.com"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoComplete="email"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Şifre</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="••••••••"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            autoComplete="password"
+          />
+        </View>
+
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Giriş Yap</Text>
         </TouchableOpacity>
+        
         <TouchableOpacity onPress={() => router.push('/register')}>
           <Text style={styles.linkText}>Hesabınız yok mu? Üye olun</Text>
         </TouchableOpacity>
@@ -62,13 +75,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
   },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 8,
+    color: '#333',
+    fontWeight: '500',
+  },
   input: {
     height: 50,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
     paddingHorizontal: 15,
-    marginBottom: 15,
     fontSize: 16,
     backgroundColor: '#fff',
   },

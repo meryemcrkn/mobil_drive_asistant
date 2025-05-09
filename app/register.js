@@ -22,36 +22,58 @@ export default function RegisterScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.innerContainer}>
         <Text style={styles.title}>Üye Ol</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ad Soyad"
-          value={name}
-          onChangeText={setName}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="E-posta"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Şifre"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Şehir"
-          value={city}
-          onChangeText={setCity}
-        />
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Ad Soyad</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Adınız ve soyadınız"
+            value={name}
+            onChangeText={setName}
+            autoComplete="name"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>E-posta Adresi</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="ornek@email.com"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoComplete="email"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Şifre</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="••••••••"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            autoComplete="password"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Şehir</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Yaşadığınız şehir"
+            value={city}
+            onChangeText={setCity}
+            autoComplete="off"
+          />
+        </View>
+
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
           <Text style={styles.buttonText}>Üye Ol</Text>
         </TouchableOpacity>
+        
         <TouchableOpacity onPress={() => router.back()}>
           <Text style={styles.linkText}>Zaten üye misiniz? Giriş yapın</Text>
         </TouchableOpacity>
@@ -77,13 +99,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
   },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 8,
+    color: '#333',
+    fontWeight: '500',
+  },
   input: {
     height: 50,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
     paddingHorizontal: 15,
-    marginBottom: 15,
     fontSize: 16,
     backgroundColor: '#fff',
   },
